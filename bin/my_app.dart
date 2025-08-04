@@ -1,5 +1,7 @@
-import 'package:my_app/my_app.dart' as my_app;
+import 'dart:io';
 
-void main(List<String> arguments) {
-  print('Hello world: ${my_app.calculate()}!');
+void main() {
+  print("Hello, my name is Dart, what's your name?");
+  var enter = stdin.readLineSync();
+  print("Hello, $enter.");
 }
