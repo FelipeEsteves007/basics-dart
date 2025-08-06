@@ -4,6 +4,8 @@ void main() {
   double numberOne = 0;
   double numbertwo = 0;
   String operation = "";
+  String? enter = "";
+  List<String> operations = <String>["+", "-", "*", "/"];
 
   void addition() {
     print(numberOne + numbertwo);
@@ -39,29 +41,38 @@ void main() {
     }
   }
 
-  print("Digite o primeiro valor: ");
 
-  String? enter = stdin.readLineSync();
-
-  if (enter != null) {
-    if (enter != "") {
-      numberOne = double.parse(enter);
+  void getOperacao(){
+    print("Digite uma operação ${operations.toString()} ");
+    enter = stdin.readLineSync();
+    if (enter != null){
+      if (operations.contains(enter)){
+        operation = enter!;
+      } else {
+        print ("Escolha uma operação válida");
+        getOperacao();
+      }
     }
   }
 
- print("Digite uma operação (+,-,*,/): ");
+  print("Digite o primeiro valor: ");
 
   enter = stdin.readLineSync();
+
   if (enter != null) {
-    operation = enter;
+    if (enter != "") {
+      numberOne = double.parse(enter!);
+    }
   }
+
+  getOperacao();
 
   print("Digite o segundo valor: ");
 
   enter = stdin.readLineSync();
   if (enter != null) {
     if (enter != "") {
-      numbertwo = double.parse(enter);
+      numbertwo = double.parse(enter!);
     }
   }
 print("O resultado da operação é: ");
